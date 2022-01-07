@@ -1,3 +1,9 @@
 class Photo < ApplicationRecord
-  belongs_to :category
+    # Validations
+    validates :title, presence: true 
+    validates :description, presence: true
+
+    # Associations
+    belongs_to :category, counter_cache: true
+    has_many :comments,as: :commentable, dependent: :destroy
 end
