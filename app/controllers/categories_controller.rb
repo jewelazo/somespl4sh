@@ -8,6 +8,8 @@ class CategoriesController < ApplicationController
     # GET /categories/:id
     def show
         @category=Category.find_by(id: params[:id])
+        @comments= @category.comments
+        @comment_new=@comments.new
     end
 
     # GET /categories/new
