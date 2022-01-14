@@ -1,6 +1,17 @@
+<h2>Categories</h2>
+<%= link_to new_category_path do %>
+    <button>NEW CATEGORY</button>
+<% end %>
+ 
 <% @categories.each do |category| %>
     <div>
+        <%= cl_image_tag category.cover.key, :width=>150, :crop=>"fill" %>
         <p><%= category.name%></p>
+        <% if category.photos_count %>
+            <span><%= category.photos_count %> photos</span>
+        <% else %>
+            <span> 0 photos </span>
+        <% end %>
         <p><%= category.description%></p>
     </div>
 
