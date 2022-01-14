@@ -76,7 +76,7 @@
         "description":"Big and majestic bears.",
         "category":"Animal",
         "image": {
-            "io_path": "db/data/food/image 36.png",
+            "io_path": "db/data/animal/image 36.png",
             "filename": "image 36.png"
         }
     },
