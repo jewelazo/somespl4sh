@@ -13,6 +13,8 @@
             <span> 0 photos </span>
         <% end %>
         <p><%= category.description%></p>
+        <%= link_to "Edit" ,edit_category_path(category) %>
+        <%= button_to "delete",category_path(category), method: :delete,data: {confirm: "Are you sure?"} %>
     </div>
 
 <% end %>

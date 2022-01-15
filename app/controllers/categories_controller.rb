@@ -14,7 +14,8 @@ class CategoriesController < ApplicationController
 
     # GET /categories/new
     def new
-        @category=Category.new
+        @category=Category.new 
+   
     end
 
     # GET /categories/:id/edit
@@ -40,6 +41,13 @@ class CategoriesController < ApplicationController
         else
             render :edit
         end
+    end
+
+    #DELETE /categories/:id
+    def destroy
+        @category=Category.find_by(id:params[:id])
+        @category.destroy
+        redirect_to root_path
     end
 
 

@@ -3,6 +3,7 @@ class Category < ApplicationRecord
     # Validations
     validates :name, presence: true , uniqueness: true
     validates :description, presence: true
+    validates :cover, presence: true
 
     # Associations
     has_many :photos, dependent: :destroy

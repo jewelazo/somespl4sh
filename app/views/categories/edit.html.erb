@@ -1,4 +1,4 @@
-<p>New Category</p>
+<p>Edit Category</p>
 
   
 <% if @category.errors.full_messages.any? %>
@@ -12,7 +12,6 @@
     <div>
         <%= form.label :name %><br />
         <%= form.text_field :name %>
-        
     </div>
     <div>
         <%= form.label :description %><br />
@@ -23,7 +22,7 @@
         <%= form.file_field :cover %>
     </div>
     <div>
-        <%= form.submit "CREATE CATEGORY" %>
+        <%= form.submit "EDIT CATEGORY" %>
     </div>
 <% end %>
 
