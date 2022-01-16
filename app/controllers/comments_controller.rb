@@ -5,11 +5,15 @@ class CommentsController < ApplicationController
         @commentable=Category.find_by(id: params[:category_id]) if params[:category_id]
         @commentable=Photo.find_by(id: params[:photo_id]) if params[:photo_id]
         @comment_new=@commentable.comments.new(comment_params)
-        if @comment_new.save
-            redirect_to root_path
-        else
-            console.log("comment not created")
-            redirect_to root_path
+        @category=@commentable
+        @comments=@category.comments
+        respond_to do |format|
+            if @comment_new.save
+                # redirect_to @commentable
+                format.html { redirect_to @commentable, notice: "Comment was successfully created." }
+            else
+                format.html { render 'categories/show', status: :unprocessable_entity }
+            end
         end
     end
 

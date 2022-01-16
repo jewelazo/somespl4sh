@@ -4,17 +4,21 @@
 <% end %>
  
 <% @categories.each do |category| %>
-    <div>
-        <%= cl_image_tag category.cover.key, :width=>150, :crop=>"fill" %>
-        <p><%= category.name%></p>
-        <% if category.photos_count %>
-            <span><%= category.photos_count %> photos</span>
-        <% else %>
-            <span> 0 photos </span>
-        <% end %>
-        <p><%= category.description%></p>
-        <%= link_to "Edit" ,edit_category_path(category) %>
-        <%= button_to "delete",category_path(category), method: :delete,data: {confirm: "Are you sure?"} %>
-    </div>
+    <%= link_to category_path(category) do %>
+        <div>
+            <%= cl_image_tag category.cover.key, :width=>150, :crop=>"fill" %>
+            <p><%= category.name%></p>
+            <% if category.photos_count && category.photos_count==1 %>
+                <span><%= category.photos_count %> photo</span>
+            <% elsif category.photos_count && category.photos_count>1 %>
+                <span><%= category.photos_count %> photos</span>
+            <% else %>
+                <span> 0 photos </span>
+            <% end %>
+            <p><%= category.description%></p>
+            <%= link_to "Edit" ,edit_category_path(category) %>
+            <%= button_to "delete",category_path(category), method: :delete,data: {confirm: "Are you sure?"} %>
+        </div>
+    <% end %>
 
 <% end %>
