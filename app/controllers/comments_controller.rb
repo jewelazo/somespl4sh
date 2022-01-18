@@ -22,6 +22,8 @@ class CommentsController < ApplicationController
     def destroy
         @commentable=Category.find_by(id: params[:category_id]) if params[:category_id]
         @commentable=Photo.find_by(id: params[:photo_id]) if params[:photo_id]
+        p "----------------"
+        p @commentable
         @comment=@commentable.comments.find_by(id: params[:id])
         @comment.destroy
         redirect_to root_path

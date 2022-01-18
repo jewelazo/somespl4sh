@@ -15,7 +15,7 @@
         <%= button_to "delete",photo_path(photo), method: :delete,data: {confirm: "Are you sure?"} %>
     </div>
 <% end %>
-<%= form_with url: "/categories/#{@category.id}/comments", model: @comment_new do |form|  %>
+<%= form_with url: category_comments_path(@category), model: @comment_new do |form|  %>
     <% if  @comment_new.errors.any? %>
       <p><%= @comment_new.errors.full_messages[0] %></p>
     <% end %>
@@ -33,5 +33,7 @@
     <div>
         <hr>
         <p><%= comment.body %></p>
+        <p>Send <%= time_ago_in_words comment.created_at %> ago</p>
+        <%=  button_to "delete" ,category_comment_path(@category,comment),method: :delete %>
     </div>
 <% end %>

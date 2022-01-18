@@ -8,7 +8,7 @@
         <% end %>
     </ul>
 <% end %>
-<%= form_with  model: @category do |form|  %>
+<%= form_with multipart: true, model: @category do |form|  %>
     <div>
         <%= form.label :name %><br />
         <%= form.text_field :name %>
@@ -19,7 +19,7 @@
     </div>
     <div>
         <%= form.label :cover %><br />
-        <%= form.file_field :cover %>
+        <%= form.file_field :cover  %>
     </div>
     <div>
         <%= form.submit "EDIT CATEGORY" %>
