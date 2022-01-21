@@ -63,7 +63,13 @@ class PhotosController < ApplicationController
         
     end
 
+    def search_form
+        
+    end
 
+    def search
+        @photos=Photo.where("lower(title) LIKE ?","%" + params[:q] + "%")
+    end
     private
     def photo_params
         params.require(:photo).permit(:title,:description,:category_id,:image)
