@@ -1,1 +1,26 @@
-<p>show</p>
+<h1><%= @photo.title %> </h1>
+<p><%= @photo.description %> </p>
+ <%= cl_image_tag @photo.image.key, :width=>150, :crop=>"fill" %>
+ <%= form_with url: photo_comments_path(@photo), model: @comment_new do |form|  %>
+    <% if  @comment_new.errors.any? %>
+      <p><%= @comment_new.errors.full_messages[0] %></p>
+    <% end %>
+    <div>
+        <%= form.label :body %><br />
+        <%= form.text_field :body %>
+    </div>
+    <div>
+        <%= form.submit "CREATE COMMENT" %>
+    </div>
+<% end %>
+<h2>Comments</h2>
+
+<% @comments.each do |comment| %>
+    <% break if comment.id.nil? %>
+    <div>
+        <hr>
+        <p><%= comment.body %></p>
+        <p>Send <%= time_ago_in_words comment.created_at %> ago</p>
+        <%=  button_to "delete" ,photo_comment_path(@photo,comment),method: :delete %>
+    </div>
+<% end %>

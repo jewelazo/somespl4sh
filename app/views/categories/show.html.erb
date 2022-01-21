@@ -1,19 +1,23 @@
 <h2><%= @category.name %></h2>
 <p><%= @category.description%></p>
 
-
+<%= link_to new_category_photo_path(@category) do %>
+    <button>NEW PHOTO</button>
+<% end %>
 <% @category.photos.each do |photo|%>
-    <div>
-        <%= cl_image_tag photo.image.key, :width=>150, :crop=>"fill" %>
-        <span><%= photo.title %></span><br>
-        <% if photo.comments.size== 1 %>
-          <span><%= photo.comments.size%> comment</span>
-        <% else %>
-          <span><%= photo.comments.size%> comments</span>
-        <% end %>
-        <%= link_to "Edit" ,edit_photo_path(photo) %>
-        <%= button_to "delete",photo_path(photo), method: :delete,data: {confirm: "Are you sure?"} %>
-    </div>
+    <%= link_to photo_path(photo) do %>
+        <div>
+            <%= cl_image_tag photo.image.key, :width=>150, :crop=>"fill" %>
+            <span><%= photo.title %></span><br>
+            <% if photo.comments.size== 1 %>
+            <span><%= photo.comments.size%> comment</span>
+            <% else %>
+            <span><%= photo.comments.size%> comments</span>
+            <% end %>
+            <%= link_to "Edit" ,edit_photo_path(photo) %>
+            <%= button_to "delete",photo_path(photo), method: :delete,data: {confirm: "Are you sure?"} %>
+        </div>
+    <% end %>
 <% end %>
 <%= form_with url: category_comments_path(@category), model: @comment_new do |form|  %>
     <% if  @comment_new.errors.any? %>
