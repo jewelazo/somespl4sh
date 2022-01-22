@@ -1,0 +1,18 @@
+<div>
+<span><%= @photos.length%> photos found</span>
+</div>
+<% @photos.each do |photo|%>
+    <%= link_to photo_path(photo) do %>
+        <div>
+            <%= cl_image_tag photo.image.key, :width=>150, :crop=>"fill" %>
+            <span><%= photo.title %></span><br>
+            <% if photo.comments.size== 1 %>
+            <span><%= photo.comments.size%> comment</span>
+            <% else %>
+            <span><%= photo.comments.size%> comments</span>
+            <% end %>
+            <%= link_to "Edit" ,edit_photo_path(photo) %>
+            <%= button_to "delete",photo_path(photo), method: :delete,data: {confirm: "Are you sure?"} %>
+        </div>
+    <% end %>
+<% end %>

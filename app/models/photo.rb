@@ -2,6 +2,7 @@ class Photo < ApplicationRecord
     # Validations
     validates :title, presence: true 
     validates :description, presence: true
+    validates :image, presence: true
 
     # Associations
     belongs_to :category, counter_cache: true

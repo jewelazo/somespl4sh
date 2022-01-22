@@ -1,0 +1,35 @@
+<p>New Photo</p>
+
+  
+<% if @photo.errors.full_messages.any? %>
+    <ul>
+        <% @photo.errors.full_messages.each do |message|%>
+            <li><%= message %></li>
+        <% end %>
+    </ul>
+<% end %>
+<%= form_with  model: @photo do |form|  %>
+    <div>
+        <%= form.label :title %><br />
+        <%= form.text_field :title %>
+        
+    </div>
+    <div>
+        <%= form.label :description %><br />
+        <%= form.text_area :description %>
+    </div>
+    <div>
+        <%= form.collection_select :category_id, Category.all, :id, :name %><br/>
+    </div>
+    <div>
+        <%= form.label :image %><br />
+        <%= form.file_field :image %>
+    </div>
+    <div>
+        <%= form.submit "CREATE PHOTO" %>
+    </div>
+<% end %>
+
+<%= link_to category_path(@photo.category) do %>
+    <button>Back</button>
+<% end %>

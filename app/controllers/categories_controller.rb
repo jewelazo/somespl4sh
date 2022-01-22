@@ -14,7 +14,8 @@ class CategoriesController < ApplicationController
 
     # GET /categories/new
     def new
-        @category=Category.new
+        @category=Category.new 
+   
     end
 
     # GET /categories/:id/edit
@@ -25,26 +26,37 @@ class CategoriesController < ApplicationController
     # POST /categories
     def create
         @category=Category.new(category_params)
-        if @category.save
-            redirect_to categories_path
-        else
-            render :new
+        respond_to do |format|
+            if @category.save
+                format.html { redirect_to categories_path, notice: "Post was successfully created." }
+            else
+                format.html { render :new, status: :unprocessable_entity }
+            end
         end
     end
 
     # PATCH /categories/:id
     def update
         @category=Category.find_by(id:params[:id])
-        if @category.update(category_params)
-            redirect_to categories_path
-        else
-            render :edit
+        respond_to do |format|
+            if @category.update(category_params)
+                format.html { redirect_to categories_path, notice: "Post was successfully updated." }
+            else
+                format.html { render :edit, status: :unprocessable_entity }
+            end
         end
+    end
+
+    #DELETE /categories/:id
+    def destroy
+        @category=Category.find_by(id:params[:id])
+        @category.destroy
+        redirect_to root_path
     end
 
 
     private
     def category_params
-        params.require(:category).permit(:name,:description)
+        params.require(:category).permit(:name,:description,:cover)
     end
 end

@@ -1,1 +1,4 @@
-@import "./base/reset.css"
+@import "./base/reset.css";
+.transparent{
+ color: transparent;
+}
