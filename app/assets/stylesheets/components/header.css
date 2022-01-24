@@ -24,3 +24,19 @@
 .line{
     margin: 0;
 }
+
+.sub-title{
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 36px;
+    color: #17171C;
+    margin-top: 32px;
+}
+.new{
+    color: #FFFFFF;
+    background: #757575;
+    margin-top: 16px;
+    margin-bottom: 16px;
+}

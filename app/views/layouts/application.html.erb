@@ -11,11 +11,15 @@
   </head>
 
   <body>
-  <% if false %>
-    <%= link_to "/searchform" do %>
-      <button>Search</button>
-    <% end %>
-  <% end %>
-    <%= yield %>
+    <div class="header-container">
+      <img src="/images/logo.png" alt="">
+      <%= link_to "/searchform" do %>
+        <button class="button-search">Search</button>
+      <% end %>
+    </div>
+    <hr class="line">
+    <div class="body-content">
+      <%= yield %>
+    </div>
   </body>
 </html>

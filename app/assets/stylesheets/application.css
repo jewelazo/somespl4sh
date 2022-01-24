@@ -3,9 +3,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;400;500&family=Montserrat:wght@100;500;600&display=swap');
 @import "./base/reset.css";
 @import "./components/header.css";
+@import "./components/card-category.css";
 .transparent{
  color: transparent;
 }
 body{
     font-family: 'Inter';
+}
+.body-content{ 
+    margin-right: 16px; 
+    margin-left: 16px;
 }

@@ -1,24 +1,39 @@
-<h2>Categories</h2>
+<h2 class="sub-title">Categories</h2>
 <%= link_to new_category_path do %>
-    <button>NEW CATEGORY</button>
+    <button class="button-search new">new Category</button>
 <% end %>
  
+<div class="card-categories-container">
 <% @categories.each do |category| %>
-    <%= link_to category_path(category) do %>
-        <div>
-            <%= cl_image_tag category.cover.key, :width=>150, :crop=>"fill" %>
-            <p><%= category.name%></p>
-            <% if category.photos_count && category.photos_count==1 %>
-                <span><%= category.photos_count %> photo</span>
-            <% elsif category.photos_count && category.photos_count>1 %>
-                <span><%= category.photos_count %> photos</span>
-            <% else %>
-                <span> 0 photos </span>
+    <div>
+        <div class="card-category" >
+            <%= link_to category_path(category) do %>
+                <%= cl_image_tag category.cover.key,:crop=>"fill" %>
+                <div class="category-content">
+                    <h2><%= category.name%></h2>
+                    <% if category.photos_count && category.photos_count==1 %>
+                        <span><%= category.photos_count %> photo</span>
+                    <% elsif category.photos_count && category.photos_count>1 %>
+                        <span><%= category.photos_count %> photos</span>
+                    <% else %>
+                        <span> 0 photos </span>
+                    <% end %>
+                    <p><%= category.description%></p>
+                </div>
             <% end %>
-            <p><%= category.description%></p>
-            <%= link_to "Edit" ,edit_category_path(category) %>
-            <%= button_to "delete",category_path(category), method: :delete,data: {confirm: "Are you sure?"} %>
+            <div class="card-cat-footer">
+                <div>
+                    <%= link_to edit_category_path(category) do %>
+                        <%= image_tag '/icons/edit.svg' %>
+                    <% end %>
+                </div>
+                <div>
+                    <%= button_to category_path(category), method: :delete,data: {confirm: "Are you sure?"} do %>
+                        <%= image_tag '/icons/delete.svg' %>
+                    <% end %>
+                </div>
+            </div>
         </div>
-    <% end %>
-
+    </div>
 <% end %>
+</div>
