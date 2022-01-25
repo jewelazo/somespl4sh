@@ -1,32 +1,37 @@
-<p>Edit Photo</p>
 
-  
+<h2 class="sub-title">New Photo</h2>
 <% if @photo.errors.full_messages.any? %>
+    <span class="error">Something went wrong:</span>
     <ul>
         <% @photo.errors.full_messages.each do |message|%>
             <li><%= message %></li>
         <% end %>
     </ul>
 <% end %>
-<%= form_with  model: @photo do |form|  %>
+<%= form_with  model: @photo ,html: { class: "form-general" }  do |form|  %>
     <div>
-        <%= form.label :title %><br />
-        <%= form.text_field :title %>
+        <%= form.label :title %>
+        <%= form.text_field :title, class: "form-text",placeholder:"Big mountain" %>
         
     </div>
     <div>
-        <%= form.label :description %><br />
-        <%= form.text_area :description %>
+        <%= form.label :description %>
+        <%= form.text_area :description, class: "form-textarea",placeholder: "Photo taken on..." %>
     </div>
     <div>
+        <%= form.label :category %>
         <%= form.collection_select :category_id, Category.all, :id, :name %><br/>
     </div>
     <div>
-        <%= form.label :image %><br />
+        <%= form.label :image %>
         <%= form.file_field :image %>
     </div>
     <div>
-        <%= form.submit "EDIT PHOTO" %>
+        <%= form.submit "EDIT PHOTO", class: "button-submit" %>
     </div>
+<% end %>
+
+<%= link_to category_path(@photo.category) do %>
+    <button class="button-back">Back</button>
 <% end %>
 

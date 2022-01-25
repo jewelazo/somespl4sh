@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'design/components'
   root "categories#index"
   get 'searchform', to: "photos#search_form"
   get 'search', to: "photos#search"

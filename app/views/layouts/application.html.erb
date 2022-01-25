@@ -11,9 +11,15 @@
   </head>
 
   <body>
-    <%= link_to "/searchform" do %>
-      <button>Search</button>
-    <% end %>
-    <%= yield %>
+    <div class="header-container">
+    <a href="/"><img src="/images/logo.png" alt=""></a>
+      <%= link_to "/searchform" do %>
+        <button class="button-search">Search</button>
+      <% end %>
+    </div>
+    <hr class="line">
+    <div class="body-content">
+      <%= yield %>
+    </div>
   </body>
 </html>
