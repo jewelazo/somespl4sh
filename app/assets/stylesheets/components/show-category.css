@@ -14,7 +14,9 @@
 .icons-footer-photo{
     display: flex;
     gap: 8px;
+    
 }
+
 .footer-photo>span{
     font-family: 'Montserrat';
     font-style: normal;
@@ -30,12 +32,12 @@
     line-height: 20px;
     color: #7A7A7A;
 }
-.photo-container-card {
+.-card {
     background: #FFFFFF;
     box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1), 0px 4px 6px -2px rgba(0, 0, 0, 0.05);
     border-radius: 8px;
 }
-.photo-container-card>a img{
+.photo-container-card > a img{
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
     width: 100%;
@@ -43,6 +45,7 @@
     object-fit: cover;
     /* width: 100%; */
 }
+
 .card-photos-container{
     display: grid;
     gap: 32px;
@@ -93,4 +96,17 @@
 .delete-photo button{
     padding: 0;
     border: none;
+}
+.field_with_errors input{
+    width: 100%;
+}
+.photo-container-card-show img{
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+.delete-icon{
+    padding: 0;
+    border: none;
+    background-color: white;
 }

@@ -28,8 +28,8 @@
                                 <% end %>
                             </div>
                             <div class="delete-photo">
-                                <%= button_to photo_path(photo), method: :delete do %>
-                                    <img src="/icons/delete.svg" alt="">
+                                <%= button_to photo_path(photo), method: :delete, form: { data: { turbo_confirm: "Are you sure?" } } do %>
+                                    <img  src="/icons/delete.svg" alt="">
                                 <% end %>
                             </div>
                         </div>
@@ -39,10 +39,15 @@
         <% end %>
         <div>
             <%= form_with url: category_comments_path(@category),html: { class: "form-comment" } ,model: @comment_new do |form|  %>
-                <% if  @comment_new.errors.any? %>
-                    <p><%= @comment_new.errors.full_messages[0] %></p>
+                <% if @comment_new.errors.any? %>
+                    <span class="error">Something went wrong:</span>
+                    <ul>
+                        <% @comment_new.errors.full_messages.each do |message|%>
+                            <li><%= message %></li>
+                        <% end %>
+                    </ul>
                 <% end %>
-                <%= form.text_field :body ,class: "form-textarea"  %>
+                <%= form.text_area :body ,class: "form-textarea"  %>
                 <%= form.submit "Comment",class: "button-submit" %>
             <% end %>
         </div>
@@ -55,7 +60,7 @@
                         <p><%= comment.body %></p>
                         <div class="comment-bottom">
                             <span>Send <%= time_ago_in_words comment.created_at %> ago</span>
-                            <%= button_to category_comment_path(@category,comment),method: :delete do %>
+                            <%= button_to category_comment_path(@category,comment),class: "delete-icon",method: :delete, form: { data: { turbo_confirm: "Are you sure?" } } do %>
                                 <img src="/icons/delete.svg" alt="">
                             <% end %>
                         </div>

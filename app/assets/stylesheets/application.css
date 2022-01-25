@@ -6,6 +6,7 @@
 @import "./components/card-category.css";
 @import "./components/form-general.css";
 @import "./components/show-category.css";
+@import "./components/photo-show.css";
 .transparent{
  color: transparent;
 }
@@ -15,4 +16,5 @@ body{
 .body-content{ 
     margin-right: 16px; 
     margin-left: 16px;
+    margin-bottom: 32px;
 }

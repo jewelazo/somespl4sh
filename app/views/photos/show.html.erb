@@ -1,26 +1,53 @@
-<h1><%= @photo.title %> </h1>
-<p><%= @photo.description %> </p>
- <%= cl_image_tag @photo.image.key, :width=>150, :crop=>"fill" %>
- <%= form_with url: photo_comments_path(@photo), model: @comment_new do |form|  %>
-    <% if  @comment_new.errors.any? %>
-      <p><%= @comment_new.errors.full_messages[0] %></p>
-    <% end %>
-    <div>
-        <%= form.label :body %><br />
-        <%= form.text_field :body %>
-    </div>
-    <div>
-        <%= form.submit "CREATE COMMENT" %>
-    </div>
-<% end %>
-<h2>Comments</h2>
 
-<% @comments.each do |comment| %>
-    <% break if comment.id.nil? %>
-    <div>
-        <hr>
-        <p><%= comment.body %></p>
-        <p>Send <%= time_ago_in_words comment.created_at %> ago</p>
-        <%=  button_to "delete" ,photo_comment_path(@photo,comment),method: :delete %>
+
+
+
+
+
+
+
+
+<div>
+    <div class="header-show-category"></div>
+        <h2 class="sub-title"><%= @photo.title %> </h2>
+        <p><%= @photo.description %></p>
+        <span class="updated-date-photo"><%= format_updated_date @photo.updated_at %></span>
     </div>
-<% end %>
+
+    <div class="card-photos-container">
+        <div class="photo-container-card-show">
+            <%= cl_image_tag @photo.image.key, :crop=>"fill" %>
+        </div>
+        <div>
+            <%= form_with url: photo_comments_path(@photo),html: { class: "form-comment" } ,model: @comment_new do |form|  %>
+                <% if @comment_new.errors.any? %>
+                    <span class="error">Something went wrong:</span>
+                    <ul>
+                        <% @comment_new.errors.full_messages.each do |message|%>
+                            <li><%= message %></li>
+                        <% end %>
+                    </ul>
+                <% end %>
+                <%= form.text_area :body ,class: "form-textarea"  %>
+                <%= form.submit "Comment",class: "button-submit" %>
+            <% end %>
+        </div>
+        <div>
+            <span class="subtitle-comments">Comments</span>
+            <div class="comments-container">
+                <% @comments.each do |comment| %>
+                    <% break if comment.id.nil? %>
+                    <div class="comment">
+                        <p><%= comment.body %></p>
+                        <div class="comment-bottom">
+                            <span>Send <%= time_ago_in_words comment.created_at %> ago</span>
+                            <%= button_to photo_comment_path(@photo,comment),class: "delete-icon",method: :delete,class: "delete-comment-photo-show", form: { data: { turbo_confirm: "Are you sure?" } } do %>
+                                <img src="/icons/delete.svg" alt="">
+                            <% end %>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

@@ -11,6 +11,8 @@
     height:120px ;
     border-top-right-radius:8px ;
     border-top-left-radius:8px ;
+    width: 100%;
+    object-fit: cover;
 }
 .card-category{
     background: #FFFFFF;
@@ -53,4 +55,8 @@
     margin: 0;
     border: none;
     background-color: white;
+}
+.card-category a{
+    text-decoration: none;
+    color: inherit;
 }

@@ -17,7 +17,11 @@ class CommentsController < ApplicationController
                 # redirect_to @commentable
                 format.html { redirect_to @commentable, notice: "Comment was successfully created." }
             else
-                format.html { render 'photos/show', status: :unprocessable_entity }
+                if @comments.sample.commentable_type=="Category"
+                    format.html { render 'categories/show', status: :unprocessable_entity }
+                else
+                    format.html { render 'photos/show', status: :unprocessable_entity }
+                end
             end
         end
     end

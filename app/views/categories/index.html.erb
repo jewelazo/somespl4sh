@@ -28,7 +28,7 @@
                     <% end %>
                 </div>
                 <div>
-                    <%= button_to category_path(category), method: :delete,data: {confirm: "Are you sure?"} do %>
+                    <%= button_to category_path(category), method: :delete, form: { data: { turbo_confirm: "Are you sure?" } } do %>
                         <%= image_tag '/icons/delete.svg' %>
                     <% end %>
                 </div>
