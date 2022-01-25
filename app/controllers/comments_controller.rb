@@ -31,7 +31,7 @@ class CommentsController < ApplicationController
         p @commentable
         @comment=@commentable.comments.find_by(id: params[:id])
         @comment.destroy
-        redirect_to root_path
+        redirect_to @commentable
     end
 
 

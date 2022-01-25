@@ -1,43 +1,67 @@
-<h2><%= @category.name %></h2>
-<p><%= @category.description%></p>
+<div>
+    <div class="header-show-category"></div>
+        <h2 class="sub-title"><%= @category.name %></h2>
+        <p><%= @category.description%></p>
+        <%= link_to new_category_photo_path(@category) do %>
+            <button class="button-search new">new Photo</button>
+        <% end %>
+    </div>
 
-<%= link_to new_category_photo_path(@category) do %>
-    <button>NEW PHOTO</button>
-<% end %>
-<% @category.photos.each do |photo|%>
-    <%= link_to photo_path(photo) do %>
+    <div class="card-photos-container">
+        <% @category.photos.each do |photo|%>
+            <div class="photo-container-card">
+                <%= link_to photo_path(photo) do %>
+                    <%= cl_image_tag photo.image.key, :crop=>"fill" %>
+                <% end %>
+                <div class="footer-photo">
+                    <span><%= photo.title %></span>
+                    <div class="footer-bottom-photo">
+                        <% if photo.comments.size== 1 %>
+                            <span><%= photo.comments.size%> comment</span>
+                        <% else %>
+                            <span><%= photo.comments.size%> comments</span>
+                        <% end %>
+                        <div class="icons-footer-photo">
+                            <div>
+                                <%= link_to edit_photo_path(photo) do %>
+                                    <img class="edit-icon-footer" src="/icons/edit.svg" alt="">
+                                <% end %>
+                            </div>
+                            <div class="delete-photo">
+                                <%= button_to photo_path(photo), method: :delete do %>
+                                    <img src="/icons/delete.svg" alt="">
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% end %>
         <div>
-            <%= cl_image_tag photo.image.key, :width=>150, :crop=>"fill" %>
-            <span><%= photo.title %></span><br>
-            <% if photo.comments.size== 1 %>
-            <span><%= photo.comments.size%> comment</span>
-            <% else %>
-            <span><%= photo.comments.size%> comments</span>
+            <%= form_with url: category_comments_path(@category),html: { class: "form-comment" } ,model: @comment_new do |form|  %>
+                <% if  @comment_new.errors.any? %>
+                    <p><%= @comment_new.errors.full_messages[0] %></p>
+                <% end %>
+                <%= form.text_field :body ,class: "form-textarea"  %>
+                <%= form.submit "Comment",class: "button-submit" %>
             <% end %>
-            <%= link_to "Edit" ,edit_photo_path(photo) %>
-            <%= button_to "delete",photo_path(photo), method: :delete,data: {confirm: "Are you sure?"} %>
         </div>
-    <% end %>
-<% end %>
-<%= form_with url: category_comments_path(@category), model: @comment_new do |form|  %>
-    <% if  @comment_new.errors.any? %>
-      <p><%= @comment_new.errors.full_messages[0] %></p>
-    <% end %>
-    <div>
-        <%= form.label :body %><br />
-        <%= form.text_field :body %>
+        <div>
+            <span class="subtitle-comments">Comments</span>
+            <div class="comments-container">
+                <% @comments.each do |comment| %>
+                    <% break if comment.id.nil? %>
+                    <div class="comment">
+                        <p><%= comment.body %></p>
+                        <div class="comment-bottom">
+                            <span>Send <%= time_ago_in_words comment.created_at %> ago</span>
+                            <%= button_to category_comment_path(@category,comment),method: :delete do %>
+                                <img src="/icons/delete.svg" alt="">
+                            <% end %>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+        </div>
     </div>
-    <div>
-        <%= form.submit "CREATE COMMENT" %>
-    </div>
-<% end %>
-<h2>Comments</h2>
-<% @comments.each do |comment| %>
-    <% break if comment.id.nil? %>
-    <div>
-        <hr>
-        <p><%= comment.body %></p>
-        <p>Send <%= time_ago_in_words comment.created_at %> ago</p>
-        <%=  button_to "delete" ,category_comment_path(@category,comment),method: :delete %>
-    </div>
-<% end %>
+</div>

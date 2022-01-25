@@ -4,6 +4,8 @@
 @import "./base/reset.css";
 @import "./components/header.css";
 @import "./components/card-category.css";
+@import "./components/form-general.css";
+@import "./components/show-category.css";
 .transparent{
  color: transparent;
 }

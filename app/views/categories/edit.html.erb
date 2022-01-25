@@ -1,31 +1,31 @@
-<p>Edit Category</p>
-
-  
+<h2 class="sub-title">Edit Category</h2>
 <% if @category.errors.full_messages.any? %>
+    <span class="error">Something went wrong:</span>
     <ul>
         <% @category.errors.full_messages.each do |message|%>
             <li><%= message %></li>
         <% end %>
     </ul>
 <% end %>
-<%= form_with multipart: true, model: @category do |form|  %>
+<%= form_with  model: @category ,html: { class: "form-general" }  do |form|  %>
     <div>
-        <%= form.label :name %><br />
-        <%= form.text_field :name %>
+        <%= form.label :name %>
+        <%= form.text_field :name, class: "form-text",placeholder:"Technology" %>
+        
     </div>
     <div>
-        <%= form.label :description %><br />
-        <%= form.text_area :description %>
+        <%= form.label :description %>
+        <%= form.text_area :description, class: "form-textarea",placeholder: "Exploring our complicated relationship with technology..." %>
     </div>
     <div>
-        <%= form.label :cover %><br />
-        <%= form.file_field :cover  %>
+        <%= form.label :cover %>
+        <%= form.file_field :cover %>
     </div>
     <div>
-        <%= form.submit "EDIT CATEGORY" %>
+        <%= form.submit "EDIT CATEGORY", class: "button-submit" %>
     </div>
 <% end %>
 
 <%= link_to categories_path do %>
-    <button>Back</button>
+    <button class="button-back">Back</button>
 <% end %>
