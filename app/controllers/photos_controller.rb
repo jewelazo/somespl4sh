@@ -68,7 +68,7 @@ class PhotosController < ApplicationController
     end
 
     def search
-        @photos=Photo.where("lower(title) LIKE ?","%" + params[:q] + "%")
+        @photos=Photo.where("lower(title) LIKE ?","%" + params[:q].downcase + "%")
     end
     private
     def photo_params
