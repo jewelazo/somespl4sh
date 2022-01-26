@@ -1,5 +1,5 @@
 # Somesplash
-Somesplash is a platform to share amazing photos by category with the world.
+Somesplash is a platform to share amazing photos by category with the world.Mobile first application
 <p align="center">
   <img src="https://www.notion.so/image/https%3A%2F%2Fp-vvf5mjm.t4.n0.cdn.getcloudapp.com%2Fitems%2F7KuE2YBy%2F67f77363-9c11-4da3-bb3c-b120b78db4ef.png%3Fv%3Da9b94c013a59b9c7c47f15d165ef817d?table=block&id=5af1cc32-499b-4aae-98ff-89baaf21b75c&cache=v2">
 </p>
