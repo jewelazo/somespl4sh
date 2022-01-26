@@ -21,6 +21,9 @@
     border-radius: 4px;
     cursor: pointer;
 }
+.button-search:active{
+    transform: scale(0.9);
+}
 .line{
     margin: 0;
 }
@@ -39,4 +42,7 @@
     background: #757575;
     margin-top: 16px;
     margin-bottom: 16px;
+}
+.new:active{
+    transform: scale(0.9);
 }
