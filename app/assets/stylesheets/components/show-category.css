@@ -1,0 +1,112 @@
+.header-show-category{
+    display: grid;
+    gap: 16px;
+}
+.footer-photo{
+    padding: 8px 16px;
+    background: #F2F2F2;
+}
+.footer-bottom-photo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.icons-footer-photo{
+    display: flex;
+    gap: 8px;
+    
+}
+
+.footer-photo>span{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 28px;
+    color: #303036;
+}
+.footer-bottom-photo span{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+    color: #7A7A7A;
+}
+.-card {
+    background: #FFFFFF;
+    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1), 0px 4px 6px -2px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+}
+.photo-container-card > a img{
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    /* width: 100%; */
+}
+
+.card-photos-container{
+    display: grid;
+    gap: 32px;
+}
+.form-comment{
+    display: grid;
+    gap: 8px;
+}
+
+.form-comment textarea{
+    height: 88px;
+}
+
+.comment{
+    padding-top: 8px;
+    border-top:2px solid #D3D3D3;
+    display: grid;
+    gap: 8px;
+}
+.comment p{
+    color: #303036;
+}
+.comment-bottom{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.comment-bottom span{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: right;
+    color: #7A7A7A;
+}
+.subtitle-comments{
+    display: block;
+    margin-bottom: 24px;
+}
+.comments-container{
+    display: grid;
+    gap: 8px;
+}
+.comment-bottom img{
+    cursor: pointer;
+}
+.delete-photo button{
+    padding: 0;
+    border: none;
+}
+.field_with_errors input{
+    width: 100%;
+}
+.photo-container-card-show img{
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+.delete-icon{
+    padding: 0;
+    border: none;
+    background-color: white;
+}

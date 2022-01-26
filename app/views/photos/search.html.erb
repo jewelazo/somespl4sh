@@ -1,0 +1,39 @@
+<h2 class="sub-title">Search</h1>
+<form action="/search">
+    <input class="search-input" type="text" name="q" >
+    <button class="button-submit" type="submit">Search photos</button>
+</form>
+<div>
+<span class="photos-search-count"><%= @photos.length%> photos found</span>
+</div>
+<div class="card-photos-container">
+        <% @photos.each do |photo|%>
+            <div class="photo-container-card">
+                <%= link_to photo_path(photo) do %>
+                    <%= cl_image_tag photo.image.key, :crop=>"fill" %>
+                <% end %>
+                <div class="footer-photo">
+                    <span><%= photo.title %></span>
+                    <div class="footer-bottom-photo">
+                        <% if photo.comments.size== 1 %>
+                            <span><%= photo.comments.size%> comment</span>
+                        <% else %>
+                            <span><%= photo.comments.size%> comments</span>
+                        <% end %>
+                        <div class="icons-footer-photo">
+                            <div>
+                                <%= link_to edit_photo_path(photo) do %>
+                                    <img class="edit-icon-footer" src="/icons/edit.svg" alt="">
+                                <% end %>
+                            </div>
+                            <div class="delete-photo">
+                                <%= button_to photo_path(photo), method: :delete do %>
+                                    <img  src="/icons/delete.svg" alt="">
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+</div>

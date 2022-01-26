@@ -1,0 +1,56 @@
+[
+    {
+        "name": "Nature",
+        "description": "Let’s celebrate the magic of Mother Earth — with images of everything our planet has to offer.",
+        "cover": {
+            "io_path": "db/data/categories/image 1.png",
+            "filename": "image 1.png"
+        }
+    },
+    
+    {
+        "name": "Wallpapers",
+        "description": "From epic drone shots to inspiring moments in nature, find free HD wallpapers worthy of your screens.",
+        "cover": {
+            "io_path": "db/data/categories/image 2.png",
+            "filename": "image 2.png"
+        }
+    },
+    
+    {
+        "name": "People",
+        "description": "Real people, captured. Photography has the power to reflect the world around us, give voice to individuals and groups.",
+        "cover": {
+            "io_path": "db/data/categories/image 12.png",
+            "filename": "image 12.png"
+        }
+    },
+    
+    {
+        "name": "Food",
+        "description": "Food, substance consisting essentially of protein, carbohydrate, fat, and other nutrients used in the body of an organism to sustain growth and vital processes and to furnish energy.",
+        "cover": {
+            "io_path": "db/data/categories/image 13.png",
+            "filename": "image 13.png"
+        }
+    },
+    
+    {
+        "name": "Technology",
+        "description": "Technology can be most broadly defined as the entities, both material and immaterial, created by the application of mental and physical effort in order to achieve some value. ",
+        "cover": {
+            "io_path": "db/data/categories/image 34.png",
+            "filename": "image 34.png"
+        }
+    },
+    
+    {
+        "name": "Animal",
+        "description": "The word animal comes from the Latin animalis, meaning 'having breath', 'having soul' or 'living being'.[1] The biological definition includes all members of the kingdom Animalia.[2] In colloquial usage, the term animal is often used to refer only to nonhuman animals.",
+        "cover": {
+            "io_path": "db/data/categories/image 15.png",
+            "filename": "image 15.png"
+        }
+    }
+
+]

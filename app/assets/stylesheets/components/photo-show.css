@@ -1,0 +1,14 @@
+.updated-date-photo{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+    color: #7A7A7A;
+    display: block;
+    margin-bottom: 16px;
+}
+.delete-comment-photo-show{
+    border: none;
+    padding: 0;
+    background-color: white;
+}
